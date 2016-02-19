@@ -1,0 +1,10 @@
+language: node_js
+
+node_js:
+  - stable
+
+before_deploy:
+  - npm run build
+
+deploy:
+  provider: azure_web_apps
