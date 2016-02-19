@@ -3,7 +3,7 @@ import route from 'koa-route'
 import bodyParser from 'koa-bodyparser'
 
 const PORT = process.env.NODE_ENV === 'production'
-  ? process.env.port ||80
+  ? process.env.port || 80
   : 3001
 
 let app = new Koa()
