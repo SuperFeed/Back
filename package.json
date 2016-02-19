@@ -27,8 +27,8 @@
     "standard": "^6.0.7"
   },
   "dependencies": {
-    "koa": "^1.1.2",
-    "koa-bodyparser": "^2.0.1",
-    "koa-route": "^2.4.2"
+    "koa": "^2.0.0-alpha.3",
+    "koa-bodyparser": "^3.0.0",
+    "koa-route": "^3.0.0"
   }
 }
