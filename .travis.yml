@@ -4,6 +4,8 @@ node_js:
   - stable
 
 before_deploy:
+  - rm -rf node_modules
+  - npm install --production
   - npm run build
 
 deploy:
