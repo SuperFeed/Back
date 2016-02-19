@@ -5,8 +5,7 @@ node_js:
 
 before_deploy:
   - npm run build
-  - git add --all
-  - git commit -m "CI build"
 
 deploy:
+  skip_cleanup: true
   provider: azure_web_apps
