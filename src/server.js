@@ -8,8 +8,9 @@ const PORT = process.env.NODE_ENV === 'production'
 
 let app = new Koa()
 
-app.use(ctx => {
+app.use((ctx, next) => {
   ctx.set('Access-Control-Allow-Origin', '*')
+  return next()
 })
 
 app.use(bodyParser())
