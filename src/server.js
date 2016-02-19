@@ -20,7 +20,7 @@ app.use(route.get('/ping', ctx => {
 }))
 
 app.use(route.get('/version', ctx => {
-  ctx.body = '1'
+  ctx.body = { version: 1 }
 }))
 
 app.use(route.post('/pong', async ctx => {
