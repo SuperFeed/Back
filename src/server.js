@@ -7,6 +7,11 @@ const PORT = process.env.NODE_ENV === 'production'
   : 3001
 
 let app = new Koa()
+
+app.use(ctx => {
+  ctx.set('Access-Control-Allow-Origin', '*')
+})
+
 app.use(bodyParser())
 
 app.use(route.get('/ping', ctx => {
