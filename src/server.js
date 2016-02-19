@@ -3,7 +3,7 @@ import route from 'koa-route'
 import bodyParser from 'koa-bodyparser'
 
 const PORT = process.env.NODE_ENV === 'production'
-  ? process.env.port || 80
+  ? process.env.PORT || 80
   : 3001
 
 let app = new Koa()
@@ -15,6 +15,10 @@ app.use(route.get('/ping', (ctx) => {
 
 app.use(route.get('/version', (ctx) => {
   ctx.body = '1'
+}))
+
+app.use(route.post('/pong', async (ctx) => {
+  ctx.body = await Promise.resolve('ping')
 }))
 
 app.listen(PORT)
