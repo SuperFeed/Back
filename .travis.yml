@@ -5,6 +5,7 @@ node_js:
 
 before_deploy:
   - npm run build
+  - git add --all
 
 deploy:
   provider: azure_web_apps
