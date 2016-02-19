@@ -9,15 +9,15 @@ const PORT = process.env.NODE_ENV === 'production'
 let app = new Koa()
 app.use(bodyParser())
 
-app.use(route.get('/ping', (ctx) => {
+app.use(route.get('/ping', ctx => {
   ctx.body = 'pong'
 }))
 
-app.use(route.get('/version', (ctx) => {
+app.use(route.get('/version', ctx => {
   ctx.body = '1'
 }))
 
-app.use(route.post('/pong', async (ctx) => {
+app.use(route.post('/pong', async ctx => {
   ctx.body = await Promise.resolve('ping')
 }))
 
