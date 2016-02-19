@@ -3,10 +3,12 @@ language: node_js
 node_js:
   - stable
 
+after
+
 before_deploy:
+  - npm run build
   - rm -rf node_modules
   - npm install --production
-  - npm run build
 
 deploy:
   skip_cleanup: true
