@@ -12,7 +12,11 @@
     "postbuild": "rimraf src"
   },
   "standard": {
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "ignore": [
+      "migrations/",
+      "seeds/"
+    ]
   },
   "author": "Ryan Delaney <rrdelaney@outlook.com>",
   "license": "MIT",
