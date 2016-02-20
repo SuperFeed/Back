@@ -22,13 +22,16 @@
     "babel-plugin-transform-async-to-generator": "^6.5.0",
     "babel-preset-es2015-node5": "^1.1.2",
     "babel-preset-stage-0": "^6.5.0",
-    "nodemon": "^1.8.1",
     "snazzy": "^3.0.0",
+    "sqlite3": "^3.1.1",
     "standard": "^5.4.1"
   },
   "dependencies": {
+    "knex": "^0.10.0",
     "koa": "^2.0.0-alpha.3",
     "koa-bodyparser": "^3.0.0",
-    "koa-route": "^3.0.0"
+    "koa-route": "^3.0.0",
+    "mysql": "^2.10.2",
+    "npmlog": "^2.0.2"
   }
 }

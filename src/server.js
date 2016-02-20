@@ -1,15 +1,23 @@
 import Koa from 'koa'
 import route from 'koa-route'
 import bodyParser from 'koa-bodyparser'
+import knex from 'knex'
+import { DB, PORT } from './config'
 
-const PORT = process.env.NODE_ENV === 'production'
-  ? process.env.PORT || 80
-  : 3001
+let db = knex(DB)
+
+console.info('[superfeed] Attempting migration')
+db.migrate.latest()
 
 let app = new Koa()
 
 app.use((ctx, next) => {
   ctx.set('Access-Control-Allow-Origin', '*')
+  return next()
+})
+
+app.use((ctx, next) => {
+  ctx.db = db
   return next()
 })
 
@@ -19,12 +27,14 @@ app.use(route.get('/ping', ctx => {
   ctx.body = 'pong'
 }))
 
-app.use(route.get('/version', ctx => {
-  ctx.body = { version: 1 }
-}))
+app.use(route.get('/version', async ctx => {
+  let q = ctx.db
+    .select('number')
+    .from('version')
+    .where('name', 'current')
 
-app.use(route.post('/pong', async ctx => {
-  ctx.body = await Promise.resolve('ping')
+  let [{ number: version }] = await q
+  ctx.body = { version }
 }))
 
 app.listen(PORT)
