@@ -1,3 +1,5 @@
 node_modules/
 target/
+back/
 dev.sqlite3
+*.log
