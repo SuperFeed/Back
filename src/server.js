@@ -1,5 +1,7 @@
 import Koa from 'koa'
-import { bodyParser, route, useState, cors } from 'libk'
+import route from 'koa-route'
+import cors from 'kcors'
+import bodyParser from 'koa-bodyparser'
 import knex from 'knex'
 import { DB, PORT } from './config'
 
@@ -10,16 +12,15 @@ db.migrate.latest().then(_ => console.info('[superfeed] Migrations completed'))
 
 let app = new Koa()
 
-app.use(cors)
-app.use(bodyParser)
-app.use(useState({ db }))
+app.use(cors())
+app.use(bodyParser())
 
-app.use(route.GET('/ping')(ctx => {
+app.use(route.get('/ping', ctx => {
   ctx.body = 'pong'
 }))
 
-app.use(route.GET('/version')(async ctx => {
-  let q = ctx.state.db
+app.use(route.get('/version', async ctx => {
+  let q = db
     .select('number')
     .from('version')
     .where('name', 'current')
