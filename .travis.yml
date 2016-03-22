@@ -1,0 +1,12 @@
+language: node_js
+
+branches:
+  only:
+    - master
+
+before_install:
+  - curl -sL https://github.com/apex/apex/releases/download/v0.7.2/apex_linux_amd64 -o ~/apex
+  - chmod +x ~/apex
+
+after_success:
+  - ~/apex deploy
