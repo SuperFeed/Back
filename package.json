@@ -18,7 +18,7 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "snazzy": "^3.0.0",
-    "standard": "^6.0.8"
+    "standard": "^5.4.1"
   },
   "repository": {
     "type": "git",
@@ -32,5 +32,8 @@
   "homepage": "https://github.com/SuperFeed/Back",
   "scripts": {
     "test": "standard | snazzy && ava"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
